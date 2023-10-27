@@ -27,11 +27,11 @@ public class User extends TimestampedEntity {
     @Column(name = "imageUrl", length = 512, nullable = false)
     private String imageUrl;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "role_id")
     private UserRole role;
 
-    @OneToMany(mappedBy = "seller", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "seller", cascade = CascadeType.MERGE, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Offer> offers = new ArrayList<>();
 
     public User(String username, String password,
