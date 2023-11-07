@@ -31,6 +31,11 @@ public class Brandsontroller {
         return brandService.getBrandModelCounts();
     }
 
+    @DeleteMapping("/brands/{id}")
+    public void del(@PathVariable UUID id ){
+        brandService.deleteCarBrand(id);
+    }
+
 
 
 }
